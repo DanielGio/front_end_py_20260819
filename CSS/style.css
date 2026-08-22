@@ -1,31 +1,79 @@
 /*
 css\style.css
-Folhas de estilo do template do site.
+Folha de estilos do template do site.
 */
 
 body {
     background-color: antiquewhite;
 }
 
-/* Classe azul aplicada par parágrafos */
-p.azul,
-div.azul {
+p.fundo,
+div.fundo {
     background-color: rgb(218, 235, 195);
     padding: 1rem;
-    margin: 1px solid black;
+    border: 1px solid black;
 }
 
-img.arredodada {
+img.cantosArredondados {
     display: block;
-    border-radius: 35%;
+    border-radius: 20%;
 }
 
-/*pai de todos*/
-#wrap {
+header {
+    display: flex;
+    align-items: center;
+}
 
+#wrap {
 }
 
 h1 {
-    /*oculta o H1 com nome do site*/
-    /* display: none; */
+    /*
+    display: none;
+    */
+}
+
+/* Dropdown */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #575c5f;
+    color: white;
+    padding: 11px;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover,
+.dropbtn:focus {
+    background-color: #4e555a;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 130px;
+    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
 }
