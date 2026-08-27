@@ -23,14 +23,24 @@
 
 <body id="top">
 
+    <!-- ============================================= -->
+    <!-- VÍDEO DE FUNDO — fica fora do #wrap, atrás de tudo -->
+    <!-- ============================================= -->
+
     <video class="video-fundo" autoplay muted loop playsinline>
         <source src="img/fundo.mp4" type="video/mp4">
+        <!-- Texto alternativo caso o navegador não suporte vídeo em HTML5 -->
+        Seu navegador não suporta a exibição de vídeo em HTML5.
     </video>
 
     <!-- Template usando metodologia WRAP -->
     <!-- Início da página -->
 
     <div id="wrap">
+
+        <!-- ============================================= -->
+        <!-- HEADER — logo, título, menu e busca -->
+        <!-- ============================================= -->
 
         <header>
 
@@ -41,56 +51,71 @@
 
             <h1>Meu Primeiro Site!</h1>
 
-            <form action="https://www.google.com/search" method="get">
+            <!-- Alteração: menu e busca agrupados nesta coluna à direita,
+                 para ficarem empilhados no canto superior direito do header -->
+            <div class="header-direita">
 
-                <label for="busca" class="sr-only">
-                    Pesquisa
-                </label>
+                <!-- Menu de navegação -->
+                <!-- Atenção: confira se produtos.html, lojas.html e categorias.html
+                     realmente existem no seu projeto com esses nomes exatos -->
+                <nav>
 
-                <input type="search"
-                    name="q"
-                    id="busca"
-                    aria-label="Buscar no Google">
+                    <div class="dropdown">
 
-                <button type="submit">
-                    <i class="fa-solid fa-binoculars"></i>
-                </button>
+                        <!-- Correção: aria-haspopup e aria-expanded para leitores de tela
+                             saberem que este botão abre um submenu e se ele está aberto -->
+                        <button type="button"
+                            onclick="myFunction(this)"
+                            class="dropbtn"
+                            aria-haspopup="true"
+                            aria-expanded="false">
+                            Menu
+                        </button>
 
-            </form>
+                        <div id="myDropdown" class="dropdown-content">
 
-        </header>
+                            <a href="produtos.html">
+                                Produtos
+                            </a>
 
-        <!-- Menu de navegação -->
+                            <a href="lojas.html">
+                                Lojas
+                            </a>
 
-        <nav>
+                            <a href="categorias.html">
+                                Categorias
+                            </a>
 
-            <div class="dropdown">
+                        </div>
 
-                <button type="button"
-                    onclick="myFunction()"
-                    class="dropbtn">
-                    Menu
-                </button>
+                    </div>
 
-                <div id="myDropdown" class="dropdown-content">
+                </nav>
 
-                    <a href="produtos.html">
-                        Produtos
-                    </a>
+                <form action="https://www.google.com/search" method="get">
 
-                    <a href="lojas.html">
-                        Lojas
-                    </a>
+                    <label for="busca" class="sr-only">
+                        Pesquisa
+                    </label>
 
-                    <a href="categorias.html">
-                        Categorias
-                    </a>
+                    <input type="search"
+                        name="q"
+                        id="busca"
+                        aria-label="Buscar no Google">
 
-                </div>
+                    <button type="submit">
+                        <i class="fa-solid fa-binoculars"></i>
+                    </button>
+
+                </form>
 
             </div>
 
-        </nav>
+        </header>
+
+        <!-- ============================================= -->
+        <!-- MAIN — conteúdo principal (section) e auxiliar (aside) -->
+        <!-- ============================================= -->
 
         <main>
 
@@ -146,16 +171,19 @@
 
                 <h3>Coisas Auxiliares</h3>
 
+                <!-- Correção: texto repetido 6 vezes reduzido para uma única frase -->
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quisquam, voluptatum. Quisquam, voluptatum. Quisquam,
-                    voluptatum. Quisquam, voluptatum. Quisquam, voluptatum.
                     Quisquam, voluptatum.
                 </p>
 
             </aside>
 
         </main>
+
+        <!-- ============================================= -->
+        <!-- FOOTER — informações, links úteis, navegação e copyright -->
+        <!-- ============================================= -->
 
         <footer>
 
@@ -165,25 +193,30 @@
 
                     <h3>Informações Úteis</h3>
 
+                    <!-- Ícone do Font Awesome adicionado antes de cada link nesta seção -->
                     <p>
+                        <i class="fa-brands fa-blogger-b"></i>
                         <a href="#">
                             Blog
                         </a>
                     </p>
 
                     <p>
+                        <i class="fa-regular fa-clipboard"></i>
                         <a href="#">
                             Trabalhe conosco
                         </a>
                     </p>
 
                     <p>
+                        <i class="fa-solid fa-at"></i>
                         <a href="#">
-                            Contato
+                            Contatos
                         </a>
                     </p>
 
                     <p>
+                        <i class="fa-solid fa-gavel"></i>
                         <a href="#">
                             Política de privacidade
                         </a>
@@ -198,30 +231,35 @@
                     <ul>
 
                         <li>
+                            <i class="fa-brands fa-facebook"></i>
                             <a href="https://facebook.com" target="_blank">
                                 Facebook
                             </a>
                         </li>
 
                         <li>
+                            <i class="fa-solid fa-link"></i>
                             <a href="https://catabits.com.br" target="_blank">
                                 Site do Fessô
                             </a>
                         </li>
 
                         <li>
+                            <i class="fa-brands fa-youtube"></i>
                             <a href="https://youtube.com" target="_blank">
                                 YouTube
                             </a>
                         </li>
 
                         <li>
+                            <i class="fa-brands fa-linkedin"></i>
                             <a href="https://linkedin.com" target="_blank">
                                 LinkedIn
                             </a>
                         </li>
 
                         <li>
+                            <i class="fa-brands fa-github"></i>
                             <a href="https://github.com" target="_blank">
                                 GitHub
                             </a>
@@ -235,39 +273,40 @@
 
                     <h3>Navegação</h3>
 
+                    <!-- Atenção: confira se contatos.html, sobre.html e informacoes.html
+                         existem com esses nomes exatos no seu projeto -->
                     <ul>
 
                         <li>
+                            <i class="fa-solid fa-house"></i>
                             <a href="index.html">
                                 Início
                             </a>
                         </li>
 
                         <li>
+                            <i class="fa-regular fa-question"></i>
                             <a href="contatos.html">
                                 Quem somos?
                             </a>
                         </li>
 
                         <li>
-                            <a href="sobre.html">
-                                Sobre
-                            </a>
-                        </li>
-
-                        <li>
+                            <i class="fa-solid fa-info"></i>
                             <a href="informacoes.html">
                                 Informações
                             </a>
                         </li>
 
                         <li>
+                            <i class="fa-solid fa-tag"></i>
                             <a href="produtos.html">
                                 Produtos
                             </a>
                         </li>
 
                         <li>
+                            <i class="fa-solid fa-list"></i>
                             <a href="categorias.html">
                                 Categorias
                             </a>
@@ -279,15 +318,7 @@
 
             </div>
 
-            <!-- Mensagem de propriedade e licença -->
-
-            <div class="footer-copyright">
-
-                <p>
-                    &copy; 2026 Polter. Todos os direitos reservados.
-                </p>
-
-            </div>
+            
 
         </footer>
 
@@ -301,16 +332,34 @@
 
         </a>
 
+<!-- Mensagem de propriedade e licença -->
+
+            <div class="footer-copyright">
+
+                <p>
+                    &copy; 2026 Polter. Todos os direitos reservados.
+                </p>
+
+            </div>
+
     </div>
+
+    <!-- ============================================= -->
+    <!-- SCRIPT — comportamento do menu dropdown -->
+    <!-- ============================================= -->
 
     <script>
 
-        function myFunction() {
+        // Correção: a função agora recebe o botão clicado (this) como parâmetro
+        // e alterna o aria-expanded para refletir o estado real do menu
+        function myFunction(botao) {
 
-            document
+            const menuAberto = document
                 .getElementById("myDropdown")
                 .classList
                 .toggle("show");
+
+            botao.setAttribute("aria-expanded", menuAberto);
 
         }
 
@@ -328,6 +377,12 @@
                     if (dropdown.classList.contains("show")) {
 
                         dropdown.classList.remove("show");
+
+                        // Correção: também fecha o aria-expanded do botão
+                        // quando o menu fecha ao clicar fora
+                        document
+                            .querySelector(".dropbtn")
+                            .setAttribute("aria-expanded", "false");
 
                     }
 

@@ -14,7 +14,82 @@ Referências: https://fonts.google.com
 
 * {
     box-sizing: border-box;
+}
+
+/*
+":focus-visible", que só mostra o contorno quando o
+foco vem do teclado (e não quando é um clique de mouse).
+*/
+:focus-visible {
+    outline: 2px solid #1b75ad;
+    outline-offset: 2px;
+}
+
+/* Header */
+
+header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+
+    /* Cor de fundo alterada para laranja translúcido */
+    background-color: rgba(216, 142, 5, 0.35);
+    padding: 20px 30px;
+}
+
+
+.header-direita {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+
+header form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Padding e espessura da borda do campo de busca ajustados */
+header form input[type="search"] {
+    padding: 3px 14px;
+    border: 2.5px solid #ccc;
+    border-radius: 20px;
+    font-size: 14px;
     outline: none;
+}
+
+header form input[type="search"]:focus-visible {
+    border-color: #1b75ad;
+}
+
+/* Padding do botão de busca ajustado */
+header form button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 12px;
+}
+
+header img {
+    width: 127px;
+    height: auto;
+    border-radius: 40%;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 
@@ -85,28 +160,6 @@ img.cantosArredondados {
     border-radius: 20%;
 }
 
-
-header {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-
-header form {
-    header form {
-    position: relative;
-    left: 50px;
-    top: 50px;
-}
-}
-
-
-header img {
-    width: 127px;
-    height: auto;
-    border-radius: 40%;
-}
 
 
 h1 {
@@ -214,12 +267,21 @@ footer {
 }
 
 
+/*
+margin-top: espaço entre esta área e o resto do rodapé acima dela.
+border-radius: arredonda os 4 cantos.
+background-color: cor de fundo desta área.
+margin lateral + padding: respiro interno, já que agora tem fundo e
+cantos próprios (o "border-top" antigo não fazia mais sentido aqui).
+*/
 .footer-copyright {
-    border-top: 1px solid #555;
+    margin: 25px 40px 20px;
+    padding: 15px 40px;
+
+    border-radius: 10px;
+    background-color: #2a2d2f;
 
     text-align: right;
-
-    padding: 15px 40px;
 }
 
 
@@ -268,10 +330,7 @@ footer {
 
 /* Dropdown */
 
-nav {
-    text-align: right;
-    padding: 10px 20px;
-}
+
 
 .dropdown {
     position: relative;
@@ -301,11 +360,12 @@ nav {
     background-color: #4e555a;
 }
 
-
 .dropdown-content {
     display: none;
 
-    position: auto;
+    position: absolute;
+   
+    right: 0;
 
     background-color: rgb(180, 175, 175);
 
@@ -337,4 +397,36 @@ nav {
 
 .show {
     display: block;
+}
+
+/* Formatos de tela*/
+/* Tablets e telas menores (até 768px) */
+@media (max-width: 768px) {
+    /* seus ajustes aqui */
+}
+
+/* Celulares (até 480px) */
+@media (max-width: 480px) {
+    /* ajustes ainda mais específicos */
+}
+
+@media (max-width: 600px) 
+{
+
+    header {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    header form {
+        margin-left: 0; /* remove o empurrão para direita no mobile */
+    }
+}
+
+@media (max-width: 700px) {
+    .footer-conteudo {
+        flex-direction: column;
+        gap: 20px;
+    }
 }
