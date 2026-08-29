@@ -16,7 +16,8 @@
         integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
         crossorigin="anonymous"
         referrerpolicy="no-referrer">
-
+     <!-- Ícone de favoritos que aparece na guia da página -->
+    <link rel="icon" href="img/placidplace-sun-5854.gif">
     <title>Meu Primeiro Site</title>
 
 </head>
@@ -33,85 +34,79 @@
         Seu navegador não suporta a exibição de vídeo em HTML5.
     </video>
 
+    <!-- ============================================= -->
+    <!-- HEADER — logo, título e busca, fora do #wrap -->
+    <!-- ============================================= -->
+
+    <header>
+
+        <a href="index.html">
+            <img src="img/placidplace-sun-5854.gif"
+                alt="Logo Meu primeiro site!">
+        </a>
+
+        <h1>Meu Primeiro Site!</h1>
+
+        <form action="https://www.google.com/search" method="get">
+
+            <label for="busca" class="sr-only">
+                Pesquisa
+            </label>
+
+            <input type="search"
+                name="q"
+                id="busca"
+                aria-label="Buscar no Google">
+
+            <button type="submit">
+                <i class="fa-solid fa-binoculars"></i>
+            </button>
+
+        </form>
+
+    </header>
+
+    <!-- ============================================= -->
+    <!-- NAV — menu de navegação, fora do #wrap -->
+    <!-- ============================================= -->
+
+    <!-- Atenção: confira se produtos.html, lojas.html e categorias.html
+         realmente existem no seu projeto com esses nomes exatos -->
+    <nav>
+
+        <!-- Adicione aqui os links clicáveis que você quiser direto na
+             barra (fora do dropdown) — exemplo: -->
+        <i class="fa-regular fa-house"></i>
+        <a href="index.html">
+            Início
+        </a>
+
+        <i class="fa-solid fa-list"></i>
+        <a href="index.html">
+            Categorias
+        </a>
+
+        <i class="fa-solid fa-link"></i>
+        <a href="index.html">
+            Links
+        </a>
+
+        <i class="fa-solid fa-at"></i>
+        <a href="index.html">
+            Contatos
+        </a>
+
+
+        </div>
+
+        </div>
+
+    </nav>
+
     <!-- Template usando metodologia WRAP -->
     <!-- Início da página -->
 
     <div id="wrap">
-
-        <!-- ============================================= -->
-        <!-- HEADER — logo, título, menu e busca -->
-        <!-- ============================================= -->
-
-        <header>
-
-            <a href="index.html">
-                <img src="img/placidplace-sun-5854.gif"
-                    alt="Logo Meu primeiro site!">
-            </a>
-
-            <h1>Meu Primeiro Site!</h1>
-
-            <!-- Alteração: menu e busca agrupados nesta coluna à direita,
-                 para ficarem empilhados no canto superior direito do header -->
-            <div class="header-direita">
-
-                <!-- Menu de navegação -->
-                <!-- Atenção: confira se produtos.html, lojas.html e categorias.html
-                     realmente existem no seu projeto com esses nomes exatos -->
-                <nav>
-
-                    <div class="dropdown">
-
-                        <!-- Correção: aria-haspopup e aria-expanded para leitores de tela
-                             saberem que este botão abre um submenu e se ele está aberto -->
-                        <button type="button"
-                            onclick="myFunction(this)"
-                            class="dropbtn"
-                            aria-haspopup="true"
-                            aria-expanded="false">
-                            Menu
-                        </button>
-
-                        <div id="myDropdown" class="dropdown-content">
-
-                            <a href="produtos.html">
-                                Produtos
-                            </a>
-
-                            <a href="lojas.html">
-                                Lojas
-                            </a>
-
-                            <a href="categorias.html">
-                                Categorias
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </nav>
-
-                <form action="https://www.google.com/search" method="get">
-
-                    <label for="busca" class="sr-only">
-                        Pesquisa
-                    </label>
-
-                    <input type="search"
-                        name="q"
-                        id="busca"
-                        aria-label="Buscar no Google">
-
-                    <button type="submit">
-                        <i class="fa-solid fa-binoculars"></i>
-                    </button>
-
-                </form>
-
-            </div>
-
-        </header>
 
         <!-- ============================================= -->
         <!-- MAIN — conteúdo principal (section) e auxiliar (aside) -->
@@ -182,7 +177,7 @@
         </main>
 
         <!-- ============================================= -->
-        <!-- FOOTER — informações, links úteis, navegação e copyright -->
+        <!-- FOOTER — informações, links úteis e navegação -->
         <!-- ============================================= -->
 
         <footer>
@@ -318,8 +313,6 @@
 
             </div>
 
-            
-
         </footer>
 
         <!-- Topo da página -->
@@ -332,66 +325,21 @@
 
         </a>
 
-<!-- Mensagem de propriedade e licença -->
+    </div>
 
-            <div class="footer-copyright">
+    <!-- Mensagem de propriedade e licença -->
 
-                <p>
-                    &copy; 2026 Polter. Todos os direitos reservados.
-                </p>
+    <div class="footer-copyright">
 
-            </div>
+        <p>
+            &copy; 2026 Polter. Todos os direitos reservados.
+        </p>
 
     </div>
 
-    <!-- ============================================= -->
-    <!-- SCRIPT — comportamento do menu dropdown -->
-    <!-- ============================================= -->
-
     <script>
 
-        // Correção: a função agora recebe o botão clicado (this) como parâmetro
-        // e alterna o aria-expanded para refletir o estado real do menu
-        function myFunction(botao) {
-
-            const menuAberto = document
-                .getElementById("myDropdown")
-                .classList
-                .toggle("show");
-
-            botao.setAttribute("aria-expanded", menuAberto);
-
-        }
-
-        window.onclick = function(event) {
-
-            if (!event.target.matches('.dropbtn')) {
-
-                let dropdowns =
-                    document.getElementsByClassName("dropdown-content");
-
-                for (let i = 0; i < dropdowns.length; i++) {
-
-                    let dropdown = dropdowns[i];
-
-                    if (dropdown.classList.contains("show")) {
-
-                        dropdown.classList.remove("show");
-
-                        // Correção: também fecha o aria-expanded do botão
-                        // quando o menu fecha ao clicar fora
-                        document
-                            .querySelector(".dropbtn")
-                            .setAttribute("aria-expanded", "false");
-
-                    }
-
-                }
-
-            }
-
-        }
-
+      
     </script>
 
 </body>
