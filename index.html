@@ -41,7 +41,7 @@
     <header>
 
         <a href="index.html">
-            <img src="img/placidplace-sun-5854.gif"
+            <img src="img/pngwing.com.png"
                 alt="Logo Meu primeiro site!">
         </a>
 
@@ -70,12 +70,8 @@
     <!-- NAV — menu de navegação, fora do #wrap -->
     <!-- ============================================= -->
 
-    <!-- Atenção: confira se produtos.html, lojas.html e categorias.html
-         realmente existem no seu projeto com esses nomes exatos -->
     <nav>
 
-        <!-- Adicione aqui os links clicáveis que você quiser direto na
-             barra (fora do dropdown) — exemplo: -->
         <i class="fa-regular fa-house"></i>
         <a href="index.html">
             Início
@@ -96,89 +92,80 @@
             Contatos
         </a>
 
-
-        </div>
-
-        </div>
-
     </nav>
 
     <!-- Template usando metodologia WRAP -->
     <!-- Início da página -->
 
-    <div id="wrap">
+    <!--
+    Wrapper novo: antes só existia o #wrap. Agora #wrap e o aside são
+    IRMÃOS dentro deste .conteudo, que é quem os organiza lado a lado
+    (função que antes era do "main"). Isso permite o aside sair do
+    fundo cinza translúcido do #wrap sem perder o layout lateral.
+    -->
+    <div class="conteudo">
 
-        <!-- ============================================= -->
-        <!-- MAIN — conteúdo principal (section) e auxiliar (aside) -->
-        <!-- ============================================= -->
+        <div id="wrap">
 
-        <main>
+            <!-- ============================================= -->
+            <!-- MAIN — conteúdo principal (section) -->
+            <!-- ============================================= -->
 
-            <section>
+            <main>
 
-                <h2>Título desta página</h2>
+                <section>
 
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Eaque pariatur nesciunt ullam ex. Commodi quam ducimus
-                    beatae porro possimus exercitationem consequatur accusantium
-                    quis, dicta quas illo quasi quia perferendis nostrum?
-                </p>
+                    <h2>Título desta página</h2>
 
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Eos consectetur ut cumque, et atque suscipit excepturi totam
-                    laudantium earum, soluta delectus eum officia distinctio,
-                    eligendi aspernatur obcaecati minima accusantium ex!
-                </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Eaque pariatur nesciunt ullam ex. Commodi quam ducimus
+                        beatae porro possimus exercitationem consequatur accusantium
+                        quis, dicta quas illo quasi quia perferendis nostrum?
+                    </p>
 
-                <img class="cantosArredondados"
-                    src="https://picsum.photos/400/200"
-                    alt="Imagem aleatória">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Eos consectetur ut cumque, et atque suscipit excepturi totam
+                        laudantium earum, soluta delectus eum officia distinctio,
+                        eligendi aspernatur obcaecati minima accusantium ex!
+                    </p>
 
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Magnam eius libero quos, commodi explicabo voluptates
-                    voluptas temporibus nam facilis dolorum, dicta rerum
-                    repellendus! Minima numquam deleniti sapiente quibusdam,
-                    vero molestias.
-                </p>
+                    <img class="cantosArredondados"
+                        src="https://picsum.photos/400/200"
+                        alt="Imagem aleatória">
 
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Saepe pariatur voluptatem sequi deserunt id? Odio modi ex
-                    voluptatem et voluptate itaque earum recusandae soluta?
-                    Molestias suscipit esse cupiditate doloribus eum!
-                </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Magnam eius libero quos, commodi explicabo voluptates
+                        voluptas temporibus nam facilis dolorum, dicta rerum
+                        repellendus! Minima numquam deleniti sapiente quibusdam,
+                        vero molestias.
+                    </p>
 
-                <!-- Aplicação de classe de CSS -->
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Saepe pariatur voluptatem sequi deserunt id? Odio modi ex
+                        voluptatem et voluptate itaque earum recusandae soluta?
+                        Molestias suscipit esse cupiditate doloribus eum!
+                    </p>
 
-                <p class="fundo">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Tempora commodi, dicta aliquam beatae sint libero similique
-                    necessitatibus quod ratione deleniti consequuntur amet
-                    aperiam aut. Commodi quia dicta cupiditate odit provident.
-                </p>
+                    <!-- Aplicação de classe de CSS -->
 
-            </section>
+                    <p class="fundo">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                        Tempora commodi, dicta aliquam beatae sint libero similique
+                        necessitatibus quod ratione deleniti consequuntur amet
+                        aperiam aut. Commodi quia dicta cupiditate odit provident.
+                    </p>
 
-            <aside>
+                </section>
 
-                <h3>Coisas Auxiliares</h3>
+            </main>
 
-                <!-- Correção: texto repetido 6 vezes reduzido para uma única frase -->
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quisquam, voluptatum.
-                </p>
-
-            </aside>
-
-        </main>
-
-        <!-- ============================================= -->
-        <!-- FOOTER — informações, links úteis e navegação -->
-        <!-- ============================================= -->
+            <!-- ============================================= -->
+            <!-- FOOTER — informações, links úteis e navegação -->
+            <!-- ============================================= -->
 
         <footer>
 
@@ -325,6 +312,24 @@
 
         </a>
 
+        </div>
+
+        <!-- ============================================= -->
+        <!-- ASIDE — campo lateral, agora fora do #wrap -->
+        <!-- ============================================= -->
+
+        <aside>
+
+            <h3>Coisas Auxiliares</h3>
+
+            <!-- Correção: texto repetido 6 vezes reduzido para uma única frase -->
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam, voluptatum.
+            </p>
+
+        </aside>
+
     </div>
 
     <!-- Mensagem de propriedade e licença -->
@@ -336,11 +341,6 @@
         </p>
 
     </div>
-
-    <script>
-
-      
-    </script>
 
 </body>
 

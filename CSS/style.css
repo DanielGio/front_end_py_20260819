@@ -157,16 +157,8 @@ body {
 
 
 /* Elemento Wrap */
-
-#wrap {
-    position: relative;
-    z-index: 1;
-
-    background-color: rgba(173, 166, 157, 0.65);
-
-    max-width: 920px;
-    margin: auto;
-}
+/* (regra #wrap está mais abaixo, junto com .conteudo — ela mudou porque
+   #wrap deixou de controlar sua própria largura sozinho) */
 
 
 p.fundo,
@@ -183,6 +175,66 @@ img.cantosArredondados {
     display: block;
     border-radius: 10%;
     margin-left: 2rem;
+}
+
+
+/*
+main/section/aside — hoje não existia NENHUMA regra pra esses três,
+então section e aside só empilhavam (comportamento padrão de bloco).
+
+"display: flex" no main é o que muda tudo: ele passa a organizar seus
+filhos diretos (section e aside) lado a lado, numa linha, em vez de
+um embaixo do outro.
+*/
+/*
+.conteudo é o novo wrapper que organiza #wrap e aside lado a lado
+(função que antes era do "main"). Ganhou a mesma receita dos outros
+elementos soltos (header/nav/footer-copyright): position/z-index para
+não sumir atrás do vídeo fixed. max-width maior que o #wrap sozinho
+(1180px em vez de 920px) porque agora precisa caber #wrap + aside +
+gap lado a lado.
+*/
+.conteudo {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+
+    max-width: 1180px;
+    margin: 0 auto 20px;
+}
+
+/*
+#wrap não precisa mais de "max-width"/"margin: auto" próprios — quem
+cuida do tamanho dele agora é o ".conteudo" (flex pai). "flex: 3" faz
+ele ocupar 3 partes do espaço disponível dentro do .conteudo.
+*/
+#wrap {
+    flex: 3;
+
+    background-color: rgba(173, 166, 157, 0.65);
+}
+
+main {
+    padding: 1.5rem;
+}
+
+/*
+aside agora é IRMÃO do #wrap (não filho) — por isso "flex: 1" está
+aqui, no nível do .conteudo, dividindo espaço 3:1 com o #wrap.
+Como ele está fora do #wrap (que dava o fundo cinza), ele não tem
+mais fundo nenhum por padrão — daí o "background-color" próprio, que
+é a peça que define visualmente o "campo lateral".
+*/
+aside {
+    flex: 1;
+
+    /* Aqui é onde você mexe na aparência do campo lateral em si */
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 1rem;
 }
 
 
@@ -363,28 +415,28 @@ fundo fixed, mesmo vindo depois dele no HTML.
 }
 
 
-/* Dropdown */
+/* Menu (nav) */
 
 /*
-Alteração: nav movido para fora do #wrap (era a única peça que ainda
-faltava, header e footer-copyright já tinham saído). Ganhou a mesma
-receita dos outros dois: position/z-index para não sumir atrás do
+Alteração: nav movido para fora do #wrap. Ganhou a mesma receita dos
+outros elementos soltos: position/z-index para não sumir atrás do
 vídeo fixed, e max-width/margin para a mesma largura/centralização
-do header e do #wrap. A regra "nav1" solta (não usada por nenhum
-elemento do HTML) foi removida — seu conteúdo não se aplicava a nada.
-*/
-/*
-Alteração: nav ganhou "background-color" e "border-radius" próprios —
-mesma cor do .dropbtn (#575c5f), pra ficar visualmente independente
-tanto do laranja do header quanto do cinza translúcido do #wrap.
-"align-items: center" alinha o link "Início" e o botão "Menu" na
-mesma linha vertical; "gap" dá espaço entre eles.
+do header e do #wrap. background-color/border-radius próprios deixam
+ele visualmente independente do laranja do header e do cinza do #wrap.
+
+Correção: "display: right" não é um valor válido de "display" (os
+valores existem são flex, block, grid, inline...) — o navegador
+ignorava essa linha, e o nav perdia o layout em linha. Trocado para
+"display: flex". Também adicionei "flex-wrap: wrap", pra que os
+links quebrem linha em telas estreitas em vez de estourar para fora
+da caixa.
 */
 nav {
     position: relative;
     z-index: 1;
 
-    display: right;
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: flex-end;
     gap: 15px;
@@ -396,16 +448,20 @@ nav {
     border-radius: 10px;
     background-color: #575c5f;
 }
-a {
+
+/*
+Correção: a regra "a { margin-right: 45px; ... }" estava sem escopo,
+afetando TODO link do site (rodapé, logo, botão de voltar ao topo).
+Restrita para "nav > a", que é só os links diretos do nav.
+*/
+nav > a {
     margin-right: 45px; /* Espaço à direita de cada link */
     text-decoration: none;
     color: rgb(255, 255, 255);
-  }
-  a:last-child {
+}
+
+nav > a:last-child {
     margin-right: 0; /* Remove espaço do último link */
-  }
-nav > a {
-    color: rgb(255, 255, 255);
 }
 
 nav > a:hover {
@@ -416,15 +472,71 @@ nav > a:hover {
     display: block;
 }
 
-/* Formatos de tela*/
-/* Tablets e telas menores (até 768px) */
+/**********************************
+ * Responsividade e Media Queries *
+ **********************************/
+
+/*
+Tablets e telas menores (até 768px).
+Reduz os respiros gerais (header, nav, footer-copyright) para não
+desperdiçar espaço em telas menores que um desktop.
+*/
 @media (max-width: 768px) {
-    /* seus ajustes aqui */
+
+    header {
+        padding: 15px 20px;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 20px;
+    }
+
+    nav > a {
+        margin-right: 20px;
+    }
+
+    /* Abaixo de 768px, volta a empilhar #wrap/aside — lado a lado
+       ficaria estreito demais numa tela de tablet ou celular */
+    .conteudo {
+        flex-direction: column;
+    }
+
+    .footer-copyright {
+        padding: 12px 25px;
+    }
 }
 
-/* Celulares (até 480px) */
+/*
+Celulares (até 480px).
+Ajustes mais agressivos: empilha o header, encolhe a logo, centraliza
+o texto do copyright e reduz a margem fixa da imagem — sem isso, a
+imagem podia estourar a largura da tela em conjunto com o
+"margin-left: 2rem" fixo que ela tem.
+*/
 @media (max-width: 480px) {
-    /* ajustes ainda mais específicos */
+
+    header img {
+        width: 80px;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    nav > a {
+        margin-right: 12px;
+        font-size: .9rem;
+    }
+
+    .footer-copyright {
+        text-align: center;
+    }
+
+    img.cantosArredondados {
+        margin-left: 1rem;
+    }
 }
 
 @media (max-width: 600px) 
